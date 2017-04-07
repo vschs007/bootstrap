@@ -5,17 +5,13 @@
  * Copyright 2013-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 module.exports = function (grunt) {
   'use strict'
-
   // Force use of Unix newlines
   grunt.util.linefeed = '\n'
-
   RegExp.quote = function (string) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
   }
-
   var isTravis = require('is-travis')
 
   // Project configuration.
