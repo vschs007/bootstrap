@@ -64,10 +64,10 @@ const Tooltip = (($) => {
   }
 
   const AttachmentMap = {
-    TOP    : 'bottom center',
-    RIGHT  : 'middle left',
-    BOTTOM : 'top center',
-    LEFT   : 'middle right'
+    TOP    : 'top',
+    RIGHT  : 'right',
+    BOTTOM : 'bottom',
+    LEFT   : 'left'
   }
 
   const HoverState = {
@@ -213,8 +213,6 @@ const Tooltip = (($) => {
     dispose() {
       clearTimeout(this._timeout)
 
-      this.cleanupTether()
-
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
@@ -283,7 +281,14 @@ const Tooltip = (($) => {
 
         this._popper = new Popper(this.element, tip, {
           placement : attachment,
-          arrowElement : Selector.TOOLTIP
+          modifiers : {
+            arrow : {
+              element : Selector.TOOLTIP
+            },
+            offset : {
+              offset : this.config.offset
+            }
+          }
         })
 
         Util.reflow(tip)
