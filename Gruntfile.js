@@ -5,22 +5,16 @@
  * Copyright 2013-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 module.exports = function (grunt) {
   'use strict'
-
   // Force use of Unix newlines
   grunt.util.linefeed = '\n'
-
   RegExp.quote = function (string) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
   }
-
   var isTravis = require('is-travis')
-
   // Project configuration.
   grunt.initConfig({
-
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
@@ -43,7 +37,6 @@ module.exports = function (grunt) {
       dist: 'dist',
       docs: 'docs/dist'
     },
-
     // JS build configuration
     babel: {
       dev: {
@@ -73,7 +66,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     stamp: {
       options: {
         banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function () {\n',
@@ -85,7 +77,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     concat: {
       options: {
         // Custom function to remove all export and import statements
@@ -117,7 +108,6 @@ module.exports = function (grunt) {
       },
       files: 'js/tests/index.html'
     },
-
     // CSS build configuration
     copy: {
       docs: {
@@ -129,7 +119,6 @@ module.exports = function (grunt) {
         dest: 'docs/dist/'
       }
     },
-
     connect: {
       server: {
         options: {
@@ -153,7 +142,6 @@ module.exports = function (grunt) {
         tasks: ['dist-css', 'docs']
       }
     },
-
     'saucelabs-qunit': {
       all: {
         options: {
@@ -247,7 +235,6 @@ module.exports = function (grunt) {
     }
 
   })
-
 
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt)
